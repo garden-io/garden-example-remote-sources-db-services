@@ -2,7 +2,7 @@ kind: Module
 description: postgres container
 type: container
 name: postgres
-image: postgres:9.4
+image: postgres:11.7-alpine
 services:
   - name: db
     volumes:
@@ -11,3 +11,7 @@ services:
     ports:
       - name: db
         containerPort: 5432
+    env:
+      POSTGRES_DATABASE: ${var.postgres-database}
+      POSTGRES_USERNAME: ${var.postgres-username}
+      POSTGRES_PASSWORD: ${var.postgres-password}
